@@ -1,0 +1,45 @@
+{
+	"_index" : "packet-2018-January-20",
+	"_source" : {
+		"layers" : {
+			"eth" : {
+				"eth.dhost" : "01:00:5e:7f:ff:fa",
+				"eth.shost" : "30:65:ec:89:e5:29",
+				"eth.type" : "0x00000800"
+			},
+			"frame" : {
+				"frame.coloring_rules" : "UDP",
+				"frame.len" : "565",
+				"frame.number" : 477,
+				"frame.protocols" : "eth:ethertype:ipv4:udp",
+				"frame.time(sec)" : "Jan 20, 2018 14:41:15.849824",
+				"frame.time_epoch" : "1516448475.849824"
+			},
+			"ip" : {
+				"ip.checksum" : "0x00000000",
+				"ip.dst" : "239.255.255.250",
+				"ip.flags" : "0x00000000",
+				"ip.flags_tree" : {
+					"ip.flags.df" : 0,
+					"ip.flags.mf" : 0,
+					"ip.flags.rb" : 0
+				},
+				"ip.hdr_len" : 20,
+				"ip.id" : "0x00007250",
+				"ip.len" : 551,
+				"ip.proto" : 17,
+				"ip.src" : "192.168.110.234",
+				"ip.tos" : 0,
+				"ip.ttl" : 4,
+				"ip.version" : 4
+			},
+			"upd" : {
+				"upd.checksum" : "0x0000b221",
+				"upd.dstport" : 1900,
+				"upd.lenght" : 4866,
+				"upd.srcport" : 1900
+			}
+		}
+	},
+	"_type" : "pcap_file"
+}

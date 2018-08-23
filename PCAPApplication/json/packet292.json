@@ -1,0 +1,37 @@
+{
+	"_index" : "packet-2018-January-20",
+	"_source" : {
+		"layers" : {
+			"eth" : {
+				"eth.dhost" : "33:33:00:00:00:0c",
+				"eth.shost" : "30:65:ec:89:e5:29",
+				"eth.type" : "0x000086dd"
+			},
+			"frame" : {
+				"frame.coloring_rules" : "UDP",
+				"frame.len" : "577",
+				"frame.number" : 292,
+				"frame.protocols" : "eth:ethertype:ipv6:udp",
+				"frame.time(sec)" : "Jan 20, 2018 14:41:14.525990",
+				"frame.time_epoch" : "1516448474.525990"
+			},
+			"ipv6" : {
+				"ipv6.dst_addr" : "ff020:0:0:0:0:0:c",
+				"ipv6.flow" : "0x0000477f",
+				"ipv6.hlim" : 4,
+				"ipv6.nåxt" : 17,
+				"ipv6.plen" : 2818,
+				"ipv6.src_addr" : "fe800:0:0:74c8:feb2:c6f7:888e",
+				"ipv6.tclass" : "0x00000000",
+				"ipv6.version" : 6
+			},
+			"upd" : {
+				"upd.checksum" : "0x0000adc2",
+				"upd.dstport" : 1900,
+				"upd.lenght" : 2818,
+				"upd.srcport" : 1900
+			}
+		}
+	},
+	"_type" : "pcap_file"
+}

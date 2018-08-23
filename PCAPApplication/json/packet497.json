@@ -1,0 +1,63 @@
+{
+	"_index" : "packet-2018-January-20",
+	"_source" : {
+		"layers" : {
+			"eth" : {
+				"eth.dhost" : "30:65:ec:89:e5:29",
+				"eth.shost" : "00:19:56:a7:cd:b2",
+				"eth.type" : "0x00000800"
+			},
+			"frame" : {
+				"frame.coloring_rule" : "TCP",
+				"frame.len" : "131",
+				"frame.number" : 497,
+				"frame.protocols" : "eth:ethertype:ipv4:tcp",
+				"frame.time(sec)" : "Jan 20, 2018 14:41:18.119794",
+				"frame.time_epoch" : "1516448478.119794"
+			},
+			"ip" : {
+				"ip.checksum" : "0x000023fb",
+				"ip.dst" : "192.168.110.234",
+				"ip.flags" : "0x00000000",
+				"ip.flags_tree" : {
+					"ip.flags.df" : 0,
+					"ip.flags.mf" : 0,
+					"ip.flags.rb" : 0
+				},
+				"ip.hdr_len" : 20,
+				"ip.id" : "0x00005346",
+				"ip.len" : 117,
+				"ip.proto" : 6,
+				"ip.src" : "064.233.161.198",
+				"ip.tos" : 0,
+				"ip.ttl" : 49,
+				"ip.version" : 4
+			},
+			"tcp" : {
+				"tcp.ack" : "3832e976",
+				"tcp.checksum" : "0x0000bc74",
+				"tcp.dstport" : 31224,
+				"tcp.flags" : "0x00000018",
+				"tcp.flags_three" : {
+					"tcp.flags.ack" : 1,
+					"tcp.flags.cwr" : 0,
+					"tcp.flags.ecn" : 0,
+					"tcp.flags.fin" : 0,
+					"tcp.flags.ns" : 0,
+					"tcp.flags.push" : 1,
+					"tcp.flags.res" : 0,
+					"tcp.flags.reset" : 0,
+					"tcp.flags.syn" : 0,
+					"tcp.flags.urg" : 0
+				},
+				"tcp.hdr_len" : 20,
+				"tcp.len" : 77,
+				"tcp.seq" : "9d4ea664",
+				"tcp.srcport" : 443,
+				"tcp.urgent_pointer" : 0,
+				"tcp.window_size" : 811
+			}
+		}
+	},
+	"_type" : "pcap_file"
+}
