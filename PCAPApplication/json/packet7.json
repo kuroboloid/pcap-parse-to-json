@@ -1,35 +1,30 @@
 {
-	"_index" : "packet-2018-January-20",
+	"_index" : "packet-2015-December-13",
 	"_source" : {
 		"layers" : {
+			"arp" : {
+				"arp.dst.hw_mac" : "00:0c:29:2f:be:8c",
+				"arp.dst.proto" : "192.168.238.130",
+				"arp.hw.size" : 6,
+				"arp.hw.type" : 1,
+				"arp.opcode" : 4,
+				"arp.proto.size" : 4,
+				"arp.proto.type" : "0x00000800",
+				"arp.src.hw_mac" : "00:50:56:e7:06:30",
+				"arp.src.proto" : "192.168.238.002"
+			},
 			"eth" : {
-				"eth.dhost" : "33:33:00:00:00:0c",
-				"eth.shost" : "30:65:ec:89:e5:29",
-				"eth.type" : "0x000086dd"
+				"eth.dhost" : "00:0c:29:2f:be:8c",
+				"eth.shost" : "00:50:56:e7:06:30",
+				"eth.type" : "0x00000806"
 			},
 			"frame" : {
-				"frame.coloring_rules" : "UDP",
-				"frame.len" : "575",
+				"frame.coloring_rule" : "ARP",
+				"frame.len" : "42",
 				"frame.number" : 7,
-				"frame.protocols" : "eth:ethertype:ipv6:udp",
-				"frame.time(sec)" : "Jan 20, 2018 14:41:12.391258",
-				"frame.time_epoch" : "1516448472.391258"
-			},
-			"ipv6" : {
-				"ipv6.dst_addr" : "ff020:0:0:0:0:0:c",
-				"ipv6.flow" : "0x0000477f",
-				"ipv6.hlim" : 4,
-				"ipv6.nåxt" : 17,
-				"ipv6.plen" : 2306,
-				"ipv6.src_addr" : "fe800:0:0:74c8:feb2:c6f7:888e",
-				"ipv6.tclass" : "0x00000000",
-				"ipv6.version" : 6
-			},
-			"upd" : {
-				"upd.checksum" : "0x0000abc2",
-				"upd.dstport" : 1900,
-				"upd.lenght" : 2306,
-				"upd.srcport" : 1900
+				"frame.protocols" : "eth:ethertype:arp",
+				"frame.time(sec)" : "Dec 13, 2015 22:45:52.600189",
+				"frame.time_epoch" : "1450035952.600189"
 			}
 		}
 	},

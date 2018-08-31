@@ -1,23 +1,23 @@
 {
-	"_index" : "packet-2018-January-20",
+	"_index" : "packet-2015-December-13",
 	"_source" : {
 		"layers" : {
 			"eth" : {
-				"eth.dhost" : "30:65:ec:89:e5:29",
-				"eth.shost" : "00:19:56:a7:cd:b2",
+				"eth.dhost" : "00:50:56:e7:06:30",
+				"eth.shost" : "00:0c:29:a4:63:4f",
 				"eth.type" : "0x00000800"
 			},
 			"frame" : {
 				"frame.coloring_rule" : "TCP",
-				"frame.len" : "66",
+				"frame.len" : "60",
 				"frame.number" : 2,
 				"frame.protocols" : "eth:ethertype:ipv4:tcp",
-				"frame.time(sec)" : "Jan 20, 2018 14:41:11.773132",
-				"frame.time_epoch" : "1516448471.773132"
+				"frame.time(sec)" : "Dec 13, 2015 22:45:52.411831",
+				"frame.time_epoch" : "1450035952.411831"
 			},
 			"ip" : {
-				"ip.checksum" : "0x0000a159",
-				"ip.dst" : "192.168.110.234",
+				"ip.checksum" : "0x00007269",
+				"ip.dst" : "217.146.190.007",
 				"ip.flags" : "0x00000002",
 				"ip.flags_tree" : {
 					"ip.flags.df" : 0,
@@ -25,37 +25,37 @@
 					"ip.flags.rb" : 0
 				},
 				"ip.hdr_len" : 20,
-				"ip.id" : "0x0000ce20",
-				"ip.len" : 52,
+				"ip.id" : "0x000081a2",
+				"ip.len" : 40,
 				"ip.proto" : 6,
-				"ip.src" : "062.128.100.055",
+				"ip.src" : "192.168.238.129",
 				"ip.tos" : 0,
-				"ip.ttl" : 57,
+				"ip.ttl" : 64,
 				"ip.version" : 4
 			},
 			"tcp" : {
-				"tcp.ack" : "49508882",
-				"tcp.checksum" : "0x00006dc5",
-				"tcp.dstport" : 14489,
-				"tcp.flags" : "0x00000012",
+				"tcp.ack" : "73c8592b",
+				"tcp.checksum" : "0x0000cbf2",
+				"tcp.dstport" : 443,
+				"tcp.flags" : "0x00000011",
 				"tcp.flags_three" : {
 					"tcp.flags.ack" : 1,
 					"tcp.flags.cwr" : 0,
 					"tcp.flags.ecn" : 0,
-					"tcp.flags.fin" : 0,
+					"tcp.flags.fin" : 1,
 					"tcp.flags.ns" : 0,
 					"tcp.flags.push" : 0,
 					"tcp.flags.res" : 0,
 					"tcp.flags.reset" : 0,
-					"tcp.flags.syn" : 1,
+					"tcp.flags.syn" : 0,
 					"tcp.flags.urg" : 0
 				},
-				"tcp.hdr_len" : 32,
-				"tcp.len" : 12,
-				"tcp.seq" : "7542ae8a",
-				"tcp.srcport" : 443,
+				"tcp.hdr_len" : 20,
+				"tcp.len" : 0,
+				"tcp.seq" : "3798510e",
+				"tcp.srcport" : 35218,
 				"tcp.urgent_pointer" : 0,
-				"tcp.window_size" : 65535
+				"tcp.window_size" : 48180
 			}
 		}
 	},

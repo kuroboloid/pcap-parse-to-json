@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>PCAPApplication</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <ProjectName>pcap-to-json</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -168,7 +169,7 @@
     <ClCompile Include="JsonBox\SolidusEscaper.cpp" />
     <ClCompile Include="JsonBox\Value.cpp" />
     <ClCompile Include="packet.cpp" />
-    <ClCompile Include="PCAPApplication.cpp" />
+    <ClCompile Include="pcap-to-json.cpp" />
     <ClCompile Include="prtcl_hdr.cpp" />
     <ClCompile Include="util.cpp" />
     <ClCompile Include="stdafx.cpp">

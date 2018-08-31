@@ -1,23 +1,39 @@
 {
-	"_index" : "packet-2018-January-20",
+	"_index" : "packet-2015-December-13",
 	"_source" : {
 		"layers" : {
+			"dns" : {
+				"dns.count.add_rr" : 0,
+				"dns.count.answers" : 2,
+				"dns.count.auth_rr" : 0,
+				"dns.count.queries" : 1,
+				"dns.flags" : "0x00008180",
+				"dns.flags_three" : {
+					"dns.flags.checkdisable" : 0,
+					"dns.flags.opcode" : 0,
+					"dns.flags.recdesired" : 1,
+					"dns.flags.response" : 1,
+					"dns.flags.truncated" : 0,
+					"dns.flags.z" : 0
+				},
+				"dns.id" : "0x00000665"
+			},
 			"eth" : {
-				"eth.dhost" : "01:00:5e:7f:ff:fa",
-				"eth.shost" : "30:65:ec:89:e5:29",
+				"eth.dhost" : "00:0c:29:a4:63:4f",
+				"eth.shost" : "00:50:56:e7:06:30",
 				"eth.type" : "0x00000800"
 			},
 			"frame" : {
 				"frame.coloring_rules" : "UDP",
-				"frame.len" : "494",
+				"frame.len" : "137",
 				"frame.number" : 13,
-				"frame.protocols" : "eth:ethertype:ipv4:udp",
-				"frame.time(sec)" : "Jan 20, 2018 14:41:13.573261",
-				"frame.time_epoch" : "1516448473.573261"
+				"frame.protocols" : "eth:ethertype:ipv4:udp:dns",
+				"frame.time(sec)" : "Dec 13, 2015 22:45:52.871769",
+				"frame.time_epoch" : "1450035952.871769"
 			},
 			"ip" : {
-				"ip.checksum" : "0x00000000",
-				"ip.dst" : "239.255.255.250",
+				"ip.checksum" : "0x0000ed70",
+				"ip.dst" : "192.168.238.129",
 				"ip.flags" : "0x00000000",
 				"ip.flags_tree" : {
 					"ip.flags.df" : 0,
@@ -25,19 +41,19 @@
 					"ip.flags.rb" : 0
 				},
 				"ip.hdr_len" : 20,
-				"ip.id" : "0x0000724c",
-				"ip.len" : 480,
+				"ip.id" : "0x0000ef2b",
+				"ip.len" : 123,
 				"ip.proto" : 17,
-				"ip.src" : "192.168.110.234",
+				"ip.src" : "192.168.238.002",
 				"ip.tos" : 0,
-				"ip.ttl" : 4,
+				"ip.ttl" : 128,
 				"ip.version" : 4
 			},
 			"upd" : {
-				"upd.checksum" : "0x00006b21",
-				"upd.dstport" : 1900,
-				"upd.lenght" : 52225,
-				"upd.srcport" : 1900
+				"upd.checksum" : "0x0000726c",
+				"upd.dstport" : 11702,
+				"upd.lenght" : 26368,
+				"upd.srcport" : 53
 			}
 		}
 	},

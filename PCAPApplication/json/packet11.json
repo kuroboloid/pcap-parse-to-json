@@ -1,43 +1,59 @@
 {
-	"_index" : "packet-2018-January-20",
+	"_index" : "packet-2015-December-13",
 	"_source" : {
 		"layers" : {
+			"dns" : {
+				"dns.count.add_rr" : 0,
+				"dns.count.answers" : 0,
+				"dns.count.auth_rr" : 0,
+				"dns.count.queries" : 1,
+				"dns.flags" : "0x00000100",
+				"dns.flags_three" : {
+					"dns.flags.checkdisable" : 0,
+					"dns.flags.opcode" : 0,
+					"dns.flags.recdesired" : 1,
+					"dns.flags.response" : 0,
+					"dns.flags.truncated" : 0,
+					"dns.flags.z" : 0
+				},
+				"dns.id" : "0x00002334"
+			},
 			"eth" : {
-				"eth.dhost" : "01:00:5e:7f:ff:fa",
-				"eth.shost" : "30:65:ec:89:e5:29",
+				"eth.dhost" : "00:50:56:e7:06:30",
+				"eth.shost" : "00:0c:29:a4:63:4f",
 				"eth.type" : "0x00000800"
 			},
 			"frame" : {
 				"frame.coloring_rules" : "UDP",
-				"frame.len" : "485",
+				"frame.len" : "74",
 				"frame.number" : 11,
-				"frame.protocols" : "eth:ethertype:ipv4:udp",
-				"frame.time(sec)" : "Jan 20, 2018 14:41:13.558196",
-				"frame.time_epoch" : "1516448473.558196"
+				"frame.protocols" : "eth:ethertype:ipv4:udp:dns",
+				"frame.time(sec)" : "Dec 13, 2015 22:45:52.865852",
+				"frame.time_epoch" : "1450035952.865852"
 			},
 			"ip" : {
-				"ip.checksum" : "0x00000000",
-				"ip.dst" : "239.255.255.250",
-				"ip.flags" : "0x00000000",
+				"ip.checksum" : "0x0000bcce",
+				"ip.dst" : "192.168.238.002",
+				"ip.flags" : "0x00000002",
 				"ip.flags_tree" : {
 					"ip.flags.df" : 0,
-					"ip.flags.mf" : 0,
+					"ip.flags.mf" : 1,
 					"ip.flags.rb" : 0
 				},
 				"ip.hdr_len" : 20,
-				"ip.id" : "0x0000724b",
-				"ip.len" : 471,
+				"ip.id" : "0x0000200d",
+				"ip.len" : 60,
 				"ip.proto" : 17,
-				"ip.src" : "192.168.110.234",
+				"ip.src" : "192.168.238.129",
 				"ip.tos" : 0,
-				"ip.ttl" : 4,
+				"ip.ttl" : 64,
 				"ip.version" : 4
 			},
 			"upd" : {
-				"upd.checksum" : "0x00006221",
-				"upd.dstport" : 1900,
-				"upd.lenght" : 49921,
-				"upd.srcport" : 1900
+				"upd.checksum" : "0x0000f166",
+				"upd.dstport" : 53,
+				"upd.lenght" : 10240,
+				"upd.srcport" : 6227
 			}
 		}
 	},

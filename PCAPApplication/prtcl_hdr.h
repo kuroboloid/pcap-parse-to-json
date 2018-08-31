@@ -52,11 +52,9 @@ typedef struct ipv6_address {
 /* ЗАГОЛОВОК Ethernet */
 typedef struct ethernet_header
 {
-	//u_int8_t  ether_dhost[6];		/* Destination addr	*/
-	//u_int8_t  ether_shost[6];		/* Source addr */
-	mac_address  ether_dhost;		/* Destination addr	*/
-	mac_address  ether_shost;		/* Source addr */
-	u_int16_t ether_type;			/* Packet type */
+	mac_address  ether_dhost;		
+	mac_address  ether_shost;		
+	u_int16_t ether_type;			
 } eth_header;
 
 /* ЗАГОЛОВОК ARP */
@@ -68,9 +66,9 @@ typedef struct arp_header
 	u_int8_t proto_size;
 	u_int16_t opcode;
 	mac_address arp_shost;	
-	ip_address saddr;  // Адрес источника
+	ip_address saddr;				// Адрес источника
 	mac_address  arp_dhost;		
-	ip_address daddr;  // Адрес назначения	
+	ip_address daddr;				// Адрес назначения	
 	
 } arp_header;
 
@@ -84,17 +82,17 @@ typedef struct ip_flags_tree
 typedef struct ip_header {
 	u_int8_t ihl:4;
 	u_int8_t version : 4;
-	u_char tos;  // Тип обслуживания
-	u_short tlen;  // Общая длина
-	u_short id;  // Идентификация
-	u_short flags;  // Флаги (3 бита) + смещение фрагмента (13 бит)
+	u_char tos;					// Тип обслуживания
+	u_short tlen;				// Общая длина
+	u_short id;					// Идентификация
+	u_short flags;				// Флаги (3 бита) + смещение фрагмента (13 бит)
 
-	u_char ttl;  // Время жизни
-	u_char proto;  // Протокол
-	u_short crc;  // Контрольная сумма заголовка
-	ip_address saddr;  // Адрес источника
-	ip_address daddr;  // Адрес назначения
-	u_int op_pad;  // Option + Padding
+	u_char ttl;					// Время жизни
+	u_char proto;				// Протокол
+	u_short crc;				// Контрольная сумма заголовка
+	ip_address saddr;			// Адрес источника
+	ip_address daddr;			// Адрес назначения
+	u_int op_pad;				// Option + Padding
 }ip_header;
 
 /*ЗАГОЛОВОК IPv6 */
@@ -153,10 +151,10 @@ typedef struct http_header
 
 /*UDP - заголовок */
 typedef struct udp_header {
-	u_short uh_sport;  // Исходный порт
-	u_short uh_dport;  // Порт назначения
-	u_short len;  // Длина 
-	u_short crc;  // Контрольная сумма
+	u_short uh_sport;		// Исходный порт
+	u_short uh_dport;		// Порт назначения
+	u_short len;			// Длина 
+	u_short crc;			// Контрольная сумма
 }udp_header;
 
 
@@ -192,21 +190,7 @@ typedef struct dns_flags_tree
 
 /*DNS - заголовок */
 typedef struct dns_header {
-	/*u_int16_t id;	//Идентификация
-	char qr;		// Тип сообщения (запрос/ответ)
-	char AA;		//Авторитетный ответ
-	char TC;		//Фрагментация
-	u_int8_t rcode;		//Код возврата
-	u_int8_t opcode;		//Код операции
-	u_int16_t qdcount;	//Количество вопросов
-	dns_question * queries;
-	u_int16_t ancount;	//Количество ответов
-	dns_rr * answers;
-	u_int16_t nscount;	//Кол-во прав доступа
-	dns_rr * name_servers;
-	u_int16_t arcount;	//Кол-во дополнительной инф.
-	dns_rr * additional;*/
-	u_int16_t id;	//Идентификация
+	u_int16_t id;		//Идентификация
 	u_int16_t flags;	//Флаги
 	u_int16_t qdcount;	//Количество вопросов
 	u_int16_t ancount;	//Количество ответов

@@ -1,23 +1,23 @@
 {
-	"_index" : "packet-2018-January-20",
+	"_index" : "packet-2015-December-13",
 	"_source" : {
 		"layers" : {
 			"eth" : {
-				"eth.dhost" : "30:65:ec:89:e5:29",
-				"eth.shost" : "00:19:56:a7:cd:b2",
+				"eth.dhost" : "00:0c:29:a4:63:4f",
+				"eth.shost" : "00:50:56:e7:06:30",
 				"eth.type" : "0x00000800"
 			},
 			"frame" : {
 				"frame.coloring_rule" : "TCP",
-				"frame.len" : "1514",
+				"frame.len" : "54",
 				"frame.number" : 20,
 				"frame.protocols" : "eth:ethertype:ipv4:tcp",
-				"frame.time(sec)" : "Jan 20, 2018 14:41:13.639180",
-				"frame.time_epoch" : "1516448473.639180"
+				"frame.time(sec)" : "Dec 13, 2015 22:45:54.454225",
+				"frame.time_epoch" : "1450035954.454225"
 			},
 			"ip" : {
-				"ip.checksum" : "0x00004f97",
-				"ip.dst" : "192.168.110.234",
+				"ip.checksum" : "0x00008864",
+				"ip.dst" : "192.168.238.129",
 				"ip.flags" : "0x00000000",
 				"ip.flags_tree" : {
 					"ip.flags.df" : 0,
@@ -25,18 +25,18 @@
 					"ip.flags.rb" : 0
 				},
 				"ip.hdr_len" : 20,
-				"ip.id" : "0x0000bdfd",
-				"ip.len" : 1500,
+				"ip.id" : "0x0000ef42",
+				"ip.len" : 40,
 				"ip.proto" : 6,
-				"ip.src" : "185.037.129.207",
+				"ip.src" : "072.030.203.224",
 				"ip.tos" : 0,
-				"ip.ttl" : 61,
+				"ip.ttl" : 128,
 				"ip.version" : 4
 			},
 			"tcp" : {
-				"tcp.ack" : "c4a596a2",
-				"tcp.checksum" : "0x00005a68",
-				"tcp.dstport" : 14487,
+				"tcp.ack" : "8a2e1c9f",
+				"tcp.checksum" : "0x0000dd7f",
+				"tcp.dstport" : 50470,
 				"tcp.flags" : "0x00000010",
 				"tcp.flags_three" : {
 					"tcp.flags.ack" : 1,
@@ -51,11 +51,11 @@
 					"tcp.flags.urg" : 0
 				},
 				"tcp.hdr_len" : 20,
-				"tcp.len" : 1460,
-				"tcp.seq" : "0f3c32f8",
+				"tcp.len" : 0,
+				"tcp.seq" : "1c008a8b",
 				"tcp.srcport" : 443,
 				"tcp.urgent_pointer" : 0,
-				"tcp.window_size" : 145
+				"tcp.window_size" : 64240
 			}
 		}
 	},

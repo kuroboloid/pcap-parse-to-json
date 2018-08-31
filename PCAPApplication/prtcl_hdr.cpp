@@ -167,20 +167,6 @@ dns_header * packet_parse_dnshdr(const char * cp)
 
 	hdr->id = ntohs(tmp->id);
 	hdr->flags = ntohs(tmp->flags);
-	/*hdr->qr = tmp->qr;
-	hdr->AA = tmp->AA;
-	hdr->TC = tmp->TC;
-	hdr->rcode = tmp->rcode;
-
-	if (hdr->rcode > 5) {   //rcodes> 5 указывает различные ошибки протокола 
-		hdr->qdcount = hdr->ancount = hdr->nscount = hdr->arcount = 0;
-		hdr->queries = NULL;
-		hdr->answers = NULL;
-		hdr->name_servers = NULL;
-		hdr->additional = NULL;
-		return;
-	}
-	*/
 	hdr->qdcount = ntohs(tmp->qdcount);
 	hdr->ancount = ntohs(tmp->ancount);
 	hdr->nscount = ntohs(tmp->nscount);

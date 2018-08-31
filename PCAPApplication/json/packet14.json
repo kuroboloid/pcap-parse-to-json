@@ -1,35 +1,59 @@
 {
-	"_index" : "packet-2018-January-20",
+	"_index" : "packet-2015-December-13",
 	"_source" : {
 		"layers" : {
+			"dns" : {
+				"dns.count.add_rr" : 0,
+				"dns.count.answers" : 2,
+				"dns.count.auth_rr" : 0,
+				"dns.count.queries" : 1,
+				"dns.flags" : "0x00008180",
+				"dns.flags_three" : {
+					"dns.flags.checkdisable" : 0,
+					"dns.flags.opcode" : 0,
+					"dns.flags.recdesired" : 1,
+					"dns.flags.response" : 1,
+					"dns.flags.truncated" : 0,
+					"dns.flags.z" : 0
+				},
+				"dns.id" : "0x0000690b"
+			},
 			"eth" : {
-				"eth.dhost" : "33:33:00:00:00:0c",
-				"eth.shost" : "30:65:ec:89:e5:29",
-				"eth.type" : "0x000086dd"
+				"eth.dhost" : "00:0c:29:a4:63:4f",
+				"eth.shost" : "00:50:56:e7:06:30",
+				"eth.type" : "0x00000800"
 			},
 			"frame" : {
 				"frame.coloring_rules" : "UDP",
-				"frame.len" : "520",
+				"frame.len" : "149",
 				"frame.number" : 14,
-				"frame.protocols" : "eth:ethertype:ipv6:udp",
-				"frame.time(sec)" : "Jan 20, 2018 14:41:13.573642",
-				"frame.time_epoch" : "1516448473.573642"
+				"frame.protocols" : "eth:ethertype:ipv4:udp:dns",
+				"frame.time(sec)" : "Dec 13, 2015 22:45:52.907297",
+				"frame.time_epoch" : "1450035952.907297"
 			},
-			"ipv6" : {
-				"ipv6.dst_addr" : "ff020:0:0:0:0:0:c",
-				"ipv6.flow" : "0x0000477f",
-				"ipv6.hlim" : 4,
-				"ipv6.nåxt" : 17,
-				"ipv6.plen" : 53761,
-				"ipv6.src_addr" : "fe800:0:0:74c8:feb2:c6f7:888e",
-				"ipv6.tclass" : "0x00000000",
-				"ipv6.version" : 6
+			"ip" : {
+				"ip.checksum" : "0x0000ed63",
+				"ip.dst" : "192.168.238.129",
+				"ip.flags" : "0x00000000",
+				"ip.flags_tree" : {
+					"ip.flags.df" : 0,
+					"ip.flags.mf" : 0,
+					"ip.flags.rb" : 0
+				},
+				"ip.hdr_len" : 20,
+				"ip.id" : "0x0000ef2c",
+				"ip.len" : 135,
+				"ip.proto" : 17,
+				"ip.src" : "192.168.238.002",
+				"ip.tos" : 0,
+				"ip.ttl" : 128,
+				"ip.version" : 4
 			},
 			"upd" : {
-				"upd.checksum" : "0x000074c2",
-				"upd.dstport" : 1900,
-				"upd.lenght" : 53761,
-				"upd.srcport" : 1900
+				"upd.checksum" : "0x0000c30a",
+				"upd.dstport" : 9305,
+				"upd.lenght" : 29440,
+				"upd.srcport" : 53
 			}
 		}
 	},

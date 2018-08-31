@@ -11,7 +11,6 @@
 
 
 
-
 packet_t* packet_new(void)
 {
 	packet_t *pkt;
@@ -20,15 +19,14 @@ packet_t* packet_new(void)
 	memset(pkt, 0, sizeof(packet_t));
 	pkt->tcp_odata = NULL;
 	pkt->tcp_data = pkt->tcp_odata;
-	//pkt->next = NULL;
-
 	return pkt;
 }
 
+/*Распарсить пакет.*/
 void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int pnum)
 {
 		const char *cp = (char*)pkt_data;
-		packet_t *pkt = NULL; // новый пакет
+		packet_t *pkt = NULL;					// Новый пакет.
 		eth_header *ethh = NULL; 
 		arp_header *arph = NULL;
 		ip_header *iph = NULL;
@@ -98,7 +96,7 @@ void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int 
 			pkt->arp_dhost.byte5 = arph->arp_dhost.byte5;
 			pkt->arp_dhost.byte6 = arph->arp_dhost.byte6;
 
-			pkt->arp_daddr.byte1 = arph->daddr.byte1;  // Адрес источника
+			pkt->arp_daddr.byte1 = arph->daddr.byte1;  // Адрес источника.
 			pkt->arp_daddr.byte2 = arph->daddr.byte2;
 			pkt->arp_daddr.byte3 = arph->daddr.byte3;
 			pkt->arp_daddr.byte4 = arph->daddr.byte4;
@@ -145,27 +143,26 @@ void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int 
 			iph = packet_parse_iphdr(cp);
 			pkt->ip_version = iph->version;
 			pkt->ip_tos = iph->tos;
-			pkt->ip_hdr_len = iph->ihl << 2;	/* байты */
+			pkt->ip_hdr_len = iph->ihl << 2;			// Байты.
 			pkt->ip_len = iph->tlen;
-			pkt->ip_id = iph->id;					// Идентификация
-			pkt->ip_flags = iph->flags >> 13;			// Флаги (3 бита) 
+			pkt->ip_id = iph->id;						// Идентификация.
+			pkt->ip_flags = iph->flags >> 13;			// Флаги (3 бита).
 
 			if (pkt->ip_flags & 0b1000) pkt->ip_ftree.rb = 1; else pkt->ip_ftree.rb = 0;
 			if (pkt->ip_flags & 0b0100) pkt->ip_ftree.df = 1; else pkt->ip_ftree.df = 0;
 			if (pkt->ip_flags & 0b0010) pkt->ip_ftree.mf = 1; else pkt->ip_ftree.mf = 0;
 
-			pkt->ip_ttl = iph->ttl;					// Время жизни
-			pkt->ip_proto = iph->proto;				// Протокол
-			pkt->ip_crc = iph->crc;					// Контрольная сумма заголовка
-			pkt->ip_srcaddr.byte1 = iph->saddr.byte1; // 0x: исходный IP-адрес 
+			pkt->ip_ttl = iph->ttl;						// Время жизни.
+			pkt->ip_proto = iph->proto;					// Протокол.
+			pkt->ip_crc = iph->crc;						// Контрольная сумма заголовка.
+			pkt->ip_srcaddr.byte1 = iph->saddr.byte1;	// 0x: исходный IP-адрес.
 			pkt->ip_srcaddr.byte2 = iph->saddr.byte2;
 			pkt->ip_srcaddr.byte3 = iph->saddr.byte3;
 			pkt->ip_srcaddr.byte4 = iph->saddr.byte4;
-			pkt->ip_dstaddr.byte1 = iph->daddr.byte1; // 0x: IP-адрес получателя
+			pkt->ip_dstaddr.byte1 = iph->daddr.byte1;	// 0x: IP-адрес получателя.
 			pkt->ip_dstaddr.byte2 = iph->daddr.byte2;
 			pkt->ip_dstaddr.byte3 = iph->daddr.byte3;
 			pkt->ip_dstaddr.byte4 = iph->daddr.byte4;
-
 			cp = cp + 20;
 
 		}
@@ -228,12 +225,12 @@ void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int 
 					memcpy(pkt->tcp_odata, cp, pkt->tcp_len);
 				}
 
-				if (pkt->http == 1) {										//HTTP*/
+				if (pkt->http == 1) {										//HTTP
 						httph = (http_header*)(u_char*)tcph + pkt->tcp_len;
 						u_char *head_end = NULL;
 						int hdl = 0;
 						head_end = (u_char*)IsRequest(cp, pkt->tcp_len);
-						if (head_end != NULL) {             //первый пакет запроса
+						if (head_end != NULL) {								// Первый пакет запроса.
 							hdl = head_end - (u_char*)cp + 1;
 							pkt->http = HTTP_REQ;
 							pkt->tcp_len = hdl;
@@ -244,7 +241,6 @@ void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int 
 							pkt->http = HTTP_RSP;
 							pkt->tcp_len = hdl;
 						}
-
 						pkt->tcp_odata = MALLOC(char, pkt->tcp_len + 1);
 						pkt->tcp_data = pkt->tcp_odata;
 						memset(pkt->tcp_odata, 0, pkt->tcp_len + 1);
@@ -257,11 +253,10 @@ void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int 
 		if (IP_TYPE_UDP == pkt->ip_proto) {
 				pkt->udp = 1;
 				udph = packet_parse_updhdr(cp);
-				pkt->upd_srcport = udph->uh_sport;  // Исходный порт
-				pkt->upd_dstport = udph->uh_dport;  // Порт назначения
-				pkt->upd_len = udph->len;  // Длина 
-				pkt->upd_crc = udph->crc;  // Контрольная сумма
-
+				pkt->upd_srcport = udph->uh_sport;			// Исходный порт.
+				pkt->upd_dstport = udph->uh_dport;			// Порт назначения.
+				pkt->upd_len = udph->len;					// Длина.
+				pkt->upd_crc = udph->crc;					// Контрольная сумма.
 				cp = cp + 8;
 
 				 /*NTP*/
@@ -290,8 +285,7 @@ void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int 
 				else pkt->dns = 0;
 			}
 		
-		//print_packet(pkt);  /*печать пакетов*/
-		packet_to_json(pkt);
+		packet_to_json(pkt);			// Отправить данные пакет для записи в json-формат.
 		free(ethh);
 		free(arph);
 		free(iph);
@@ -302,164 +296,11 @@ void packet_preprocess(const pcap_pkthdr * header, const u_char * pkt_data, int 
 
 }
 
-void print_packet(packet_t * pkt)
-{
-	time_t local_tv_sec;
-	struct tm ltime;
-	char timestr[16];
-	char timestr2[16];
-	char eth1[18], eth2[18];
 
-	/*преобразовать метку времени в читаемый формат*/
-	local_tv_sec = pkt->frame_sec;
-	localtime_s(&ltime, &local_tv_sec);
-	strftime(timestr, sizeof timestr, "%H:%M:%S", &ltime);
-	strftime(timestr2, sizeof timestr2, "%Y-%B-%d", &ltime);
-
-	std::cout << "_index: packet-" << timestr2 << "\n";
-
-	std::cout << "Number: " << pkt->frame_number << "\n";
-
-	//printf("Time (sec): %lld\n",pkt->cap_sec);
-	std::cout << "Time (sec): " << timestr << "\n";
-
-	//printf("Time(usec): %lld\n", pkt->cap_usec);
-	std::cout << "Time (usec): " << pkt->frame_usec << "\n";
-
-	//printf("Length: %d\n",	pkt->raw_len);
-	std::cout << "Length: " << pkt->frame_len << "\n";
-
-	sprintf_s(eth1, "%x:%x:%x:%x:%x:%x",
-		pkt->eth_dhost.byte1,
-		pkt->eth_dhost.byte2,
-		pkt->eth_dhost.byte3,
-		pkt->eth_dhost.byte4,
-		pkt->eth_dhost.byte5,
-		pkt->eth_dhost.byte6);
-
-	sprintf_s(eth2, "%x:%x:%x:%x:%x:%x",
-		pkt->eth_shost.byte1,
-		pkt->eth_shost.byte2,
-		pkt->eth_shost.byte3,
-		pkt->eth_shost.byte4,
-		pkt->eth_shost.byte5,
-		pkt->eth_shost.byte6);
-
-	std::cout << "Ethernet: " << eth1 << " -> " << eth2 << "\n";
-	
-	printf("eth.type: %x\n", pkt->eth_type);
-
-	printf("IP: %d.%d.%d.%d -> %d.%d.%d.%d\n",
-		pkt->ip_srcaddr.byte1,
-		pkt->ip_srcaddr.byte2,
-		pkt->ip_srcaddr.byte3,
-		pkt->ip_srcaddr.byte4,
-		pkt->ip_dstaddr.byte1,
-		pkt->ip_dstaddr.byte2,
-		pkt->ip_dstaddr.byte3,
-		pkt->ip_dstaddr.byte4);
-
-	printf("IP-header lenght: %d\n", pkt->ip_hdr_len);
-
-	printf("IP protocol: %d\n", pkt->ip_proto);
-
-	printf("IP lenght: %d\n", pkt->ip_len);
-
-	printf("TCP: %d -> %d\n",
-		pkt->tcp_srcport,
-		pkt->tcp_dstport);
-
-	printf("TCP sequence number: %d\n", pkt->tcp_seq);
-
-	printf("TCP acknowledge number: %d\n", pkt->tcp_ack);
-
-	printf("TCP flags: %d\n", pkt->tcp_ack);
-
-	printf("TCP window size: %d\n", pkt->tcp_win);
-
-	printf("TCP header length: %d\n", pkt->tcp_hdr_len);
-
-	printf("TCP payload length: %d\n", pkt->tcp_len);
-
-	printf("Orignal TCP payload: %*s\n", pkt->tcp_odata);
-
-	printf("Real useful data: %*s\n", pkt->tcp_data);
-
-	printf("HTTP: %d\n", pkt->http);
-
-	printf("\n\n");
-}
-
-void to_json()
-{
-   JsonBox::Value root;
-   int i=4;
-
-	root["_index"] = JsonBox::Value("packet-2017");
-	root["_type"] = JsonBox::Value("pcap_file");
-
-		root["_source"]["layers"]["frame"]["frame.number"] = JsonBox::Value("");
-		root["_source"]["layers"]["frame"]["frame.time(sec)"] = JsonBox::Value("");
-		root["_source"]["layers"]["frame"]["frame.time(usec)"] = JsonBox::Value("");
-		root["_source"]["layers"]["frame"]["frame.len"] = JsonBox::Value("");
-		i--;
-		root["_source"]["layers"]["eth"]["eth.dhost"] = JsonBox::Value("");
-		root["_source"]["layers"]["eth"]["eth.shost"] = JsonBox::Value("");
-		root["_source"]["layers"]["eth"]["eth.type"] = JsonBox::Value("");
-		i--;
-		root["_source"]["layers"]["ip"]["ip.ver_ihl"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.tos"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.len"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.id"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.flags"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.ttl"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.proto"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.checksum"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.src"] = JsonBox::Value("");
-		root["_source"]["layers"]["ip"]["ip.dst"] = JsonBox::Value("");
-		i--;
-		root["_source"]["layers"]["upd"]["upd.srcport"] = JsonBox::Value("");
-		root["_source"]["layers"]["upd"]["upd.dstport"] = JsonBox::Value("");
-		root["_source"]["layers"]["upd"]["upd.lenght"] = JsonBox::Value("");
-		root["_source"]["layers"]["upd"]["upd.checksum"] = JsonBox::Value("");
-		i--;
-		root["_source"]["layers"]["tcp"]["tcp.srcport"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.dstport"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.len"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.seq"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.ack"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.hdr_len"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.flags"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.window_size"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.checksum"] = JsonBox::Value("");
-		root["_source"]["layers"]["tcp"]["tcp.urgent_pointer"] = JsonBox::Value("");
-	
-		std::cout << root;
-}
-
-void load_from_json()
-{
-	std::string fname = ""; //имя дампа
-
-	printf("Enter the number of packet:");
-	std::cin >> fname;
-
-	if (fname == "")
-	{
-		fprintf(stderr, "\n Error!  \n");
-		return;
-	}
-	fname = "json//packet" + fname + ".json";
-
-	JsonBox::Value v2;
-	v2.loadFromFile(fname);
-	std::cout << v2 << std::endl;
-}
-
+/*Записать данные о пакете в json-файл.*/
 void packet_to_json(packet_t *pkt)
 {
 	JsonBox::Value jpkt;
-	//JsonBox::Object  jpkt;
 	time_t local_tv_sec;
 	struct tm ltime;
 	char usec[50], timestr[50], timestr2[30];
@@ -475,12 +316,12 @@ void packet_to_json(packet_t *pkt)
 	
 	std::string jsonfile = "json//packet" + std::to_string(pkt->frame_number) + ".json";
 		
-	/*преобразовать метку времени в читаемый формат*/
+	/* Преобразовать метку времени в читаемый формат.*/
 	local_tv_sec = pkt->frame_sec;
 	localtime_s(&ltime, &local_tv_sec);
 	strftime(timestr2, sizeof  timestr2, "%Y-%B-%d", &ltime);
 	
-	//strcat_s(index, timestr2);
+
 	index = index+timestr2;
 
 	jpkt["_index"] = JsonBox::Value(index);
@@ -727,10 +568,6 @@ void packet_to_json(packet_t *pkt)
 
 		}
 
-	
-	//std::cout << jpkt << "\n";
-	//JsonBox::Value v(jpkt);
-	//v.writeToFile(jsonfile);
 	jpkt.writeToFile(jsonfile);
 	
 }

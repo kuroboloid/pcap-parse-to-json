@@ -47,9 +47,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="PCAPApplication.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="packet.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -85,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="JsonBox\Convert.cpp">
       <Filter>Исходные файлы\json_src</Filter>
+    </ClCompile>
+    <ClCompile Include="pcap-to-json.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

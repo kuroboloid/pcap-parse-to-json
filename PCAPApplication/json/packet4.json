@@ -1,48 +1,48 @@
 {
-	"_index" : "packet-2018-January-20",
+	"_index" : "packet-2015-December-13",
 	"_source" : {
 		"layers" : {
 			"eth" : {
-				"eth.dhost" : "00:19:56:a7:cd:b2",
-				"eth.shost" : "30:65:ec:89:e5:29",
+				"eth.dhost" : "00:0c:29:a4:63:4f",
+				"eth.shost" : "00:50:56:e7:06:30",
 				"eth.type" : "0x00000800"
 			},
 			"frame" : {
 				"frame.coloring_rule" : "TCP",
-				"frame.len" : "781",
+				"frame.len" : "54",
 				"frame.number" : 4,
 				"frame.protocols" : "eth:ethertype:ipv4:tcp",
-				"frame.time(sec)" : "Jan 20, 2018 14:41:11.774946",
-				"frame.time_epoch" : "1516448471.774946"
+				"frame.time(sec)" : "Dec 13, 2015 22:45:52.411869",
+				"frame.time_epoch" : "1450035952.411869"
 			},
 			"ip" : {
-				"ip.checksum" : "0x00000000",
-				"ip.dst" : "062.128.100.055",
-				"ip.flags" : "0x00000002",
+				"ip.checksum" : "0x000004e2",
+				"ip.dst" : "192.168.238.129",
+				"ip.flags" : "0x00000000",
 				"ip.flags_tree" : {
 					"ip.flags.df" : 0,
-					"ip.flags.mf" : 1,
+					"ip.flags.mf" : 0,
 					"ip.flags.rb" : 0
 				},
 				"ip.hdr_len" : 20,
-				"ip.id" : "0x00002544",
-				"ip.len" : 767,
+				"ip.id" : "0x0000ef29",
+				"ip.len" : 40,
 				"ip.proto" : 6,
-				"ip.src" : "192.168.110.234",
+				"ip.src" : "217.146.190.007",
 				"ip.tos" : 0,
-				"ip.ttl" : 64,
+				"ip.ttl" : 128,
 				"ip.version" : 4
 			},
 			"tcp" : {
-				"tcp.ack" : "7542ae8b",
-				"tcp.checksum" : "0x0000d53b",
-				"tcp.dstport" : 443,
-				"tcp.flags" : "0x00000018",
+				"tcp.ack" : "3798510f",
+				"tcp.checksum" : "0x00008d2e",
+				"tcp.dstport" : 35218,
+				"tcp.flags" : "0x00000019",
 				"tcp.flags_three" : {
 					"tcp.flags.ack" : 1,
 					"tcp.flags.cwr" : 0,
 					"tcp.flags.ecn" : 0,
-					"tcp.flags.fin" : 0,
+					"tcp.flags.fin" : 1,
 					"tcp.flags.ns" : 0,
 					"tcp.flags.push" : 1,
 					"tcp.flags.res" : 0,
@@ -51,11 +51,11 @@
 					"tcp.flags.urg" : 0
 				},
 				"tcp.hdr_len" : 20,
-				"tcp.len" : 727,
-				"tcp.seq" : "49508882",
-				"tcp.srcport" : 14489,
+				"tcp.len" : 0,
+				"tcp.seq" : "73c8592b",
+				"tcp.srcport" : 443,
 				"tcp.urgent_pointer" : 0,
-				"tcp.window_size" : 256
+				"tcp.window_size" : 64239
 			}
 		}
 	},
